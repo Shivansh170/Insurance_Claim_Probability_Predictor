@@ -1,10 +1,15 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+
+const authRoutes = require("./routes/authRoutes");
 const app = express();
 dotenv.config();
 //middlewares
 app.use(express.json());
+
+//routes
+app.use("/auth", authRoutes);
 const startServer = async () => {
   try {
     await connectDB();
